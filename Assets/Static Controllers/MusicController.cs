@@ -34,7 +34,7 @@ public class MusicController : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
 
         monoSource1 = this.gameObject.AddComponent<AudioSource>();
         monoSource2 = this.gameObject.AddComponent<AudioSource>();
@@ -116,7 +116,7 @@ public class MusicController : MonoBehaviour
         if (source.volume <= 0.001f) source.volume = 0f;
         if (source.volume.Equals(0f))
         {
-            if (!source.isPlaying) source.Stop();
+            if (source.isPlaying) source.Stop();
             return;
         }
         float musicVolume = gameSettings.MasterVolume * gameSettings.MusicVolume;

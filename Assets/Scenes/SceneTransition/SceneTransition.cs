@@ -15,6 +15,7 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] TextMeshProUGUI loadingText;
     [SerializeField] float transitionDuration = 0.5f;
     [SerializeField] float waitTime = 2f;
+    [SerializeField] GameObject canvas;
 
     enum STATE
     {
@@ -121,8 +122,7 @@ public class SceneTransition : MonoBehaviour
     void BeginTransition(SceneController.SCENE nextScene)
     {
         if (!state.Equals(STATE.DONE)) return;
-        blackoutPanel.gameObject.SetActive(true);
-        loadingText.gameObject.SetActive(true);
+        canvas.SetActive(true);
         state = STATE.FADE_IN;
         timer = 0f;
     }
@@ -132,7 +132,6 @@ public class SceneTransition : MonoBehaviour
     {
         state = STATE.DONE;
         timer = 0f;
-        blackoutPanel.gameObject.SetActive(false);
-        loadingText.gameObject.SetActive(false);
+        canvas.SetActive(false);
     }
 }

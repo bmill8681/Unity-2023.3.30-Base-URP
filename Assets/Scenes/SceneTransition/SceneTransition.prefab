@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3268320057793775919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -185,6 +185,8 @@ MonoBehaviour:
   loadingText: {fileID: 6572838316188262311}
   transitionDuration: 0.3
   waitTime: 2
+  canvas: {fileID: 8428597578845046700}
+  state: 3
 --- !u!1 &7064809517171378689
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &54771994925685147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -273,12 +275,12 @@ GameObject:
   - component: {fileID: 4319084333806920098}
   - component: {fileID: 4917108312656443186}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas*
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8582987054161589859
 RectTransform:
   m_ObjectHideFlags: 0
@@ -321,7 +323,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4319084333806920098
 MonoBehaviour:
@@ -335,10 +337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

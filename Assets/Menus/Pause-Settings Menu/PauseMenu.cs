@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
 
     // TODO: This could be better and animate in or something. Fix it if time permits.
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject firstSelectedElement;
+    [SerializeField] GameObject returnToElement;
 
     private void Awake()
     {
@@ -26,7 +28,23 @@ public class PauseMenu : MonoBehaviour
 
     void HandleToggleMenu(GameController.GAMESTATE state, GameController.GAMESTATE prevState)
     {
-        if (state.Equals(GameController.GAMESTATE.PAUSED)) menu.SetActive(true);
-        else menu.SetActive(false);
+        if (state.Equals(GameController.GAMESTATE.PAUSED))
+        {
+            menu.SetActive(true);
+            if (firstSelectedElement != null)
+            {
+                EventSystem.current?.SetSelectedGameObject(null);
+                EventSystem.current?.SetSelectedGameObject(firstSelectedElement);
+            }
+        }
+        else
+        {
+            menu.SetActive(false);
+            if (returnToElement != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(returnToElement);
+            }
+        }
     }
 }

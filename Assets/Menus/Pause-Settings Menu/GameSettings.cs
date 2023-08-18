@@ -1,8 +1,8 @@
-using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class GameSettings : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class GameSettings : MonoBehaviour
     [SerializeField] Slider masterVolumeSlider;
     [SerializeField] Slider musicVolumeSlider;
     [SerializeField] Slider sfxVolumeSlider;
+
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class GameSettings : MonoBehaviour
 
     void HandleSelectionInput(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Performed");
+        // If you need any specific controller function you can add it here, but it's likely not necessary.
     }
 
     public void SetMasterVolume()
@@ -54,4 +55,18 @@ public class GameSettings : MonoBehaviour
 
     // TODO: When a strategy is set for handling sound effects, set the sound effect volume here.
     public void SetSfxVolume() { settings.SfxVolume = sfxVolumeSlider.value; }
+
+    public void UnpauseGame() { GameController.instance.SetState(GameController.GAMESTATE.RUNNING); }
+
+    public void QuitGame()
+    {
+        GameController.instance.QuitGame();
+    }
+
+    public void GoToMainMenu()
+    {
+        GameController.instance.SetState(GameController.GAMESTATE.RUNNING);
+        SceneController.instance.TransitionToScene(SceneController.SCENE.MAIN_MENU);
+        MusicController.instance.StopMusic();
+    }
 }

@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
     }
 
     public event Action<GAMESTATE, GAMESTATE> OnStateChanged;
@@ -34,6 +34,12 @@ public class GameController : MonoBehaviour
         PreviousState = State;
         State = newState;
         OnStateChanged?.Invoke(State, PreviousState);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("I quit the game.");
+        Application.Quit();
     }
 }
 
