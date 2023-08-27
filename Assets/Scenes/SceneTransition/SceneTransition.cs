@@ -41,8 +41,13 @@ public class SceneTransition : MonoBehaviour
 
     private void Start()
     {
-        SceneController.instance.onTransitionStart += BeginTransition;
+        SceneController.instance.onTransitionStart += HandleTransition;
         SceneController.instance.onTransitionEnd += EndTransition;
+    }
+    private void OnDestroy()
+    {
+        SceneController.instance.onTransitionStart -= HandleTransition;
+        SceneController.instance.onTransitionEnd -= EndTransition;
     }
 
     private void Update()
@@ -118,11 +123,16 @@ public class SceneTransition : MonoBehaviour
         SetAlphas(newAlpha);
     }
 
-
-    void BeginTransition(SceneController.SCENE nextScene)
+    void HandleTransition(SceneController.SCENE nextScene)
     {
         if (!state.Equals(STATE.DONE)) return;
+        StartCoroutine(BeginTransition());
+    }
+    IEnumerator BeginTransition()
+    {
         canvas.SetActive(true);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
         state = STATE.FADE_IN;
         timer = 0f;
     }

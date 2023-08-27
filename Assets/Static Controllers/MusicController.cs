@@ -57,22 +57,6 @@ public class MusicController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            PlayMusic(SOUNDTRACK.TEST_TRACK_1);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            PlayMusic(SOUNDTRACK.TEST_TRACK_2);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            StopMusic();
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PlayMusic();
-        }
         HandleState();
         ResolveNextState();
     }

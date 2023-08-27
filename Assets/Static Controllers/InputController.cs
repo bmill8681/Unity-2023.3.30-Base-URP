@@ -6,8 +6,6 @@ public class InputController : MonoBehaviour
     public static InputController instance;
     public PlayerInputActions PlayerInput { get; private set; }
 
-    // TODO: FIgure out why PlayerInput is null when scene is changed back to main menu
-
     private void Awake()
     {
         if (instance != null)
@@ -32,6 +30,7 @@ public class InputController : MonoBehaviour
 
     private void OnDisable()
     {
+        if (PlayerInput == null) return;
         PlayerInput.Disable();
         PlayerInput.MenuActions.Exit.performed -= ctx => ToggleMenu();
         PlayerInput.GameActions.Pause.performed -= ctx => ToggleMenu();
