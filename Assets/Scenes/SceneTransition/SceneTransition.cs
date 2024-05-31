@@ -52,6 +52,7 @@ public class SceneTransition : MonoBehaviour
 
     private void Update()
     {
+        // These are debug controls for testing. Delete em.
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SceneController.instance.TransitionToScene(SceneController.SCENE.MAIN_GAME);

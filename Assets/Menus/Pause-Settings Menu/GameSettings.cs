@@ -15,15 +15,14 @@ public class GameSettings : MonoBehaviour
     private void Awake()
     {
         if (!settings) throw new Exception("GameSettings requires a GameSettingsSO object");
-
-        masterVolumeSlider.value = settings.MasterVolume;
-        musicVolumeSlider.value = settings.MusicVolume;
-        sfxVolumeSlider.value = settings.SfxVolume;
     }
 
     private void Start()
     {
         InputController.instance.OnToggleMenuActions += ToggleInputSubscription;
+        masterVolumeSlider.value = settings.MasterVolume;
+        musicVolumeSlider.value = settings.MusicVolume;
+        sfxVolumeSlider.value = settings.SfxVolume;
     }
 
     private void OnDestroy()

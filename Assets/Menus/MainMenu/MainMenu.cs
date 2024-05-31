@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : FocusProtector
 {
     [SerializeField] GameObject firstSelectedElement;
 
@@ -11,6 +11,11 @@ public class MainMenu : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstSelectedElement);
+        this.lastSelected = firstSelectedElement;
+    }
+    private void Update()
+    {
+        this.HandleFocusLoss();
     }
     public void StartGame()
     {
