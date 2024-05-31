@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : FocusProtector
 {
 
     // TODO: This could be better and animate in or something. Fix it if time permits.
@@ -19,6 +19,11 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         GameController.instance.OnStateChanged += HandleToggleMenu;
+    }
+
+    private void Update()
+    {
+        this.HandleFocusLoss();
     }
 
     private void OnDestroy()
